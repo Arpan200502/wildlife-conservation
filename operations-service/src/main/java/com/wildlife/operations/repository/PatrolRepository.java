@@ -1,3 +1,7 @@
 package com.wildlife.operations.repository;
 
-// TODO: Extend JpaRepository in PatrolRepository.
+import com.wildlife.operations.model.Patrol;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PatrolRepository extends JpaRepository<Patrol, Integer> {
+}
