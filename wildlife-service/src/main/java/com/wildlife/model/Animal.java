@@ -32,66 +32,82 @@ public class Animal {
     private int protectedAreaId;
 
     public Animal() {
+
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public String getAnimalCode() {
+
         return animalCode;
     }
 
     public void setAnimalCode(String animalCode) {
+
         this.animalCode = animalCode;
     }
 
     public Species getSpecies() {
+
         return species;
     }
 
     public void setSpecies(Species species) {
+
         this.species = species;
     }
 
     public int getAge() {
+
         return age;
     }
 
     public void setAge(int age) {
+
         this.age = age;
     }
 
     public String getHealthStatus() {
+
         return healthStatus;
     }
 
     public void setHealthStatus(String healthStatus) {
+
         this.healthStatus = healthStatus;
     }
 
     public String getLocation() {
+
         return location;
     }
 
     public void setLocation(String location) {
+
         this.location = location;
     }
 
     public int getProtectedAreaId() {
+
         return protectedAreaId;
     }
 
     public void setProtectedAreaId(int protectedAreaId) {
+
         this.protectedAreaId = protectedAreaId;
     }
 
     @Override
     public String toString() {
+
         return "Animal{" +
                 "id=" + id +
                 ", animalCode='" + animalCode + '\'' +

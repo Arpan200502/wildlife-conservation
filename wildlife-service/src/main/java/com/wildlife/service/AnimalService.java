@@ -1,15 +1,12 @@
 
 package com.wildlife.service;
 
-import com.wildlife.model.Animal;
-import com.wildlife.model.Species;
-import com.wildlife.repository.AnimalRepository;
-import com.wildlife.repository.SpeciesRepository;
-
+import com.wildlife.model.*;
+import com.wildlife.repository.*;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 
 @Service
 public class AnimalService {
@@ -38,10 +35,12 @@ public class AnimalService {
     }
 
     public List<Animal> getAllAnimals() {
+
         return animalRepository.findAll();
     }
 
     public Optional<Animal> getAnimalById(int id) {
+
         return animalRepository.findById(id);
     }
 
@@ -58,6 +57,7 @@ public class AnimalService {
     }
 
     public void deleteAnimal(int id) {
+
         animalRepository.deleteById(id);
     }
 }
