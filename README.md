@@ -24,3 +24,9 @@ We're building a web application to help forest officers manage wildlife, protec
 Each service has its own PostgreSQL database, and the frontend communicates directly with the services.
 
 **Our main differentiator:** A smart priority system that identifies which protected areas need attention most and helps officers decide where to send patrol teams.
+
+
+
+
+
+from irine
