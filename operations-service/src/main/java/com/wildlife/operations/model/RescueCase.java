@@ -10,7 +10,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "rescue_cases")
+    // this just holds the row data
 public class RescueCase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

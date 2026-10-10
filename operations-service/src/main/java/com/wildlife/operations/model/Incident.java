@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+    // keep the mapping simple
 public class Incident {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

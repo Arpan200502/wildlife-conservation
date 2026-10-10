@@ -8,7 +8,12 @@ import com.wildlife.operations.model.Incident;
 import com.wildlife.operations.repository.IncidentRepository;
 
 @Service
+// database work stays in this service
+    // let the repo do the db work
+    // TODO: maybe split this later
+    // System.out.println("service hit");
 public class IncidentService {
+
 
     private final IncidentRepository repo;
 
@@ -16,8 +21,8 @@ public class IncidentService {
         this.repo = repo;
     }
 
-    public Incident addIncident(Incident incident) {
-        return repo.save(incident);
+    public Incident addIncident(Incident inc) {
+        return repo.save(inc);
     }
 
     public List<Incident> getAllIncidents() {
@@ -28,8 +33,8 @@ public class IncidentService {
         return repo.findById(id).orElse(null);
     }
 
-    public Incident updateIncident(Incident incident) {
-        return repo.save(incident);
+    public Incident updateIncident(Incident inc) {
+        return repo.save(inc);
     }
 
     public void deleteIncident(Integer id) {

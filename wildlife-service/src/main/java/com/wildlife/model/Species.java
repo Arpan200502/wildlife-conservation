@@ -5,11 +5,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "species")
+    // plain fields for jpa
 public class Species {
 
-    // quick note
-    // TODO: tidy this later
-    // System.out.println("debug");
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

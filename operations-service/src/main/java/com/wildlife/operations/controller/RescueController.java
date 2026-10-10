@@ -10,34 +10,40 @@ import java.util.List;
 @RequestMapping("/api/rescues")
 @CrossOrigin(origins = "http://localhost:5173")
 public class RescueController {
-    private final RescueService rescueService;
 
-    public RescueController(RescueService rescueService) {
-        this.rescueService = rescueService;
+    private final RescueService svc;
+
+    public RescueController(RescueService svc) {
+        this.svc = svc;
     }
 
+    // these methods are only the api entry points
+    // request handling stays here
+    // TODO: clean this up later
+    // System.out.println("route hit");
+
     @PostMapping
-    public RescueCase createRescue(@RequestBody RescueCase rescueCase) {
-        return rescueService.createRescue(rescueCase);
+    public RescueCase createRescue(@RequestBody RescueCase rc) {
+        return svc.createRescue(rc);
     }
 
     @GetMapping
     public List<RescueCase> getAllRescues() {
-        return rescueService.getAllRescues();
+        return svc.getAllRescues();
     }
 
     @GetMapping("/{id}")
     public RescueCase getRescueById(@PathVariable Integer id) {
-        return rescueService.getRescueById(id);
+        return svc.getRescueById(id);
     }
 
     @PutMapping
-    public RescueCase updateRescue(@RequestBody RescueCase rescueCase) {
-        return rescueService.updateRescue(rescueCase);
+    public RescueCase updateRescue(@RequestBody RescueCase rc) {
+        return svc.updateRescue(rc);
     }
 
     @DeleteMapping("/{id}")
     public void deleteRescue(@PathVariable Integer id) {
-        rescueService.deleteRescue(id);
+        svc.deleteRescue(id);
     }
 }

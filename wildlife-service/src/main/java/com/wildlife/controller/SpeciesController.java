@@ -7,48 +7,51 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/species")
+@RequestMapping("/api/sp")
 @CrossOrigin(origins = "http://localhost:5173")
 public class SpeciesController {
 
-    // simple enough
-    // TODO: tidy this later
-    // System.out.println("checking");
 
-    private final SpeciesService speciesService;
 
-    public SpeciesController(SpeciesService speciesService) {
+    private final SpeciesService svc;
 
-        this.speciesService = speciesService;
+    public SpeciesController(SpeciesService svc) {
+
+        this.svc = svc;
     }
 
-    @PostMapping
-    public Species addSpecies(@RequestBody Species species) {
+    // keep the http mapping here, logic stays in the service
+    // keep this endpoint pretty plain
+    // TODO: clean this up later
+    // System.out.println("route hit");
 
-        return speciesService.addSpecies(species);
+    @PostMapping
+    public Species addSpecies(@RequestBody Species sp) {
+
+        return svc.addSpecies(sp);
     }
 
     @GetMapping
     public List<Species> getAllSpecies() {
 
-        return speciesService.getAllSpecies();
+        return svc.getAllSpecies();
     }
 
     @GetMapping("/{id}")
     public Species getSpeciesById(@PathVariable int id) {
 
-        return speciesService.getSpeciesById(id);
+        return svc.getSpeciesById(id);
     }
 
     @PutMapping
-    public Species updateSpecies(@RequestBody Species species) {
+    public Species updateSpecies(@RequestBody Species sp) {
 
-        return speciesService.updateSpecies(species);
+        return svc.updateSpecies(sp);
     }
 
     @DeleteMapping("/{id}")
     public void deleteSpecies(@PathVariable int id) {
 
-        speciesService.deleteSpecies(id);
+        svc.deleteSpecies(id);
     }
 }

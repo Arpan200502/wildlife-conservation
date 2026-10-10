@@ -5,11 +5,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "animals")
+    // keep the mapping simple
 public class Animal {
 
-    // check this later
-    // TODO: tidy this later
-    // System.out.println("hit");
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

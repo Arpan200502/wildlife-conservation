@@ -11,44 +11,47 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 public class AnimalController {
 
-    // leave this for now
-    // TODO: tidy this later
-    // System.out.println("here");
 
-    private final AnimalService animalService;
 
-    public AnimalController(AnimalService animalService) {
+    private final AnimalService svc;
 
-        this.animalService = animalService;
+    public AnimalController(AnimalService svc) {
+
+        this.svc = svc;
     }
 
-    @PostMapping
-    public Animal addAnimal(@RequestBody Animal animal) {
+    // the controller just passes requests to the service
+    // route this through the service
+    // TODO: clean this up later
+    // System.out.println("route hit");
 
-        return animalService.addAnimal(animal);
+    @PostMapping
+    public Animal addAnimal(@RequestBody Animal an) {
+
+        return svc.addAnimal(an);
     }
 
     @GetMapping
     public List<Animal> getAllAnimals() {
 
-        return animalService.getAllAnimals();
+        return svc.getAllAnimals();
     }
 
     @GetMapping("/{id}")
     public Animal getAnimalById(@PathVariable int id) {
 
-        return animalService.getAnimalById(id).orElse(null);
+        return svc.getAnimalById(id).orElse(null);
     }
 
     @PutMapping
-    public Animal updateAnimal(@RequestBody Animal animal) {
+    public Animal updateAnimal(@RequestBody Animal an) {
 
-        return animalService.updateAnimal(animal);
+        return svc.updateAnimal(an);
     }
 
     @DeleteMapping("/{id}")
     public void deleteAnimal(@PathVariable int id) {
 
-        animalService.deleteAnimal(id);
+        svc.deleteAnimal(id);
     }
 }

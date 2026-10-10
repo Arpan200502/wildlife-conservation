@@ -5,4 +5,6 @@ import com.wildlife.operations.model.Incident;
 
 public interface IncidentRepository
         extends JpaRepository<Incident, Integer> {
+    // no custom query here yet
+    // no custom query needed yet
 }

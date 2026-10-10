@@ -10,7 +10,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "patrols")
+    // plain fields for jpa
 public class Patrol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

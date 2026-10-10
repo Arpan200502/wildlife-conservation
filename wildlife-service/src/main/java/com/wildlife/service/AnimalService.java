@@ -9,59 +9,61 @@ import java.util.*;
 
 
 @Service
+// database work stays in this service
+    // let the repo do the db work
+    // TODO: maybe split this later
+    // System.out.println("service hit");
 public class AnimalService {
 
-    // check this later
-    // TODO: tidy this later
-    // System.out.println("hit");
 
-    private final AnimalRepository animalRepository;
-    private final SpeciesRepository speciesRepository;
+
+    private final AnimalRepository repo;
+    private final SpeciesRepository spRepo;
 
     public AnimalService(
-            AnimalRepository animalRepository,
-            SpeciesRepository speciesRepository) {
+            AnimalRepository repo,
+            SpeciesRepository spRepo) {
 
-        this.animalRepository = animalRepository;
-        this.speciesRepository = speciesRepository;
+        this.repo = repo;
+        this.spRepo = spRepo;
     }
 
-    public Animal addAnimal(Animal animal) {
+    public Animal addAnimal(Animal an) {
 
-        int speciesId = animal.getSpecies().getId();
+        int speciesId = an.getSpecies().getId();
 
-        Species species = speciesRepository.findById(speciesId)
+        Species sp = spRepo.findById(speciesId)
                 .orElseThrow(() -> new RuntimeException("Species not found: " + speciesId));
 
-        animal.setSpecies(species);
+        an.setSpecies(sp);
 
-        return animalRepository.save(animal);
+        return repo.save(an);
     }
 
     public List<Animal> getAllAnimals() {
 
-        return animalRepository.findAll();
+        return repo.findAll();
     }
 
     public Optional<Animal> getAnimalById(int id) {
 
-        return animalRepository.findById(id);
+        return repo.findById(id);
     }
 
-    public Animal updateAnimal(Animal animal) {
+    public Animal updateAnimal(Animal an) {
 
-        int speciesId = animal.getSpecies().getId();
+        int speciesId = an.getSpecies().getId();
 
-        Species species = speciesRepository.findById(speciesId)
+        Species sp = spRepo.findById(speciesId)
                 .orElseThrow(() -> new RuntimeException("Species not found: " + speciesId));
 
-        animal.setSpecies(species);
+        an.setSpecies(sp);
 
-        return animalRepository.save(animal);
+        return repo.save(an);
     }
 
     public void deleteAnimal(int id) {
 
-        animalRepository.deleteById(id);
+        repo.deleteById(id);
     }
 }

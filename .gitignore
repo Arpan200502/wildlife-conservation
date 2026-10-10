@@ -4,3 +4,4 @@ target/
 *.iml
 .env
 .DS_Store
+conservation-service/src/main/resources/application.properties

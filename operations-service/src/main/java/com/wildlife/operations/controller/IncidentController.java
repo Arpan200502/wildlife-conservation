@@ -13,15 +13,21 @@ import com.wildlife.operations.service.IncidentService;
 @CrossOrigin(origins = "http://localhost:5173")
 public class IncidentController {
 
+
     private final IncidentService service;
 
     public IncidentController(IncidentService service) {
         this.service = service;
     }
 
+    // the controller just passes requests to the service
+    // route this through the service
+    // TODO: clean this up later
+    // System.out.println("route hit");
+
     @PostMapping
-    public Incident addIncident(@RequestBody Incident incident) {
-        return service.addIncident(incident);
+    public Incident addIncident(@RequestBody Incident inc) {
+        return service.addIncident(inc);
     }
 
     @GetMapping
@@ -35,8 +41,8 @@ public class IncidentController {
     }
 
     @PutMapping
-    public Incident updateIncident(@RequestBody Incident incident) {
-        return service.updateIncident(incident);
+    public Incident updateIncident(@RequestBody Incident inc) {
+        return service.updateIncident(inc);
     }
 
     @DeleteMapping("/{id}")

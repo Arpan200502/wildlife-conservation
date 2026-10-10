@@ -8,41 +8,43 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+// keep the crud calls together here
+    // keep the service methods small
+    // TODO: maybe split this later
+    // System.out.println("service hit");
 public class SpeciesService {
 
-    // quick note
-    // TODO: tidy this later
-    // System.out.println("debug");
 
-    private final SpeciesRepository speciesRepository;
 
-    public SpeciesService(SpeciesRepository speciesRepository) {
+    private final SpeciesRepository repo;
 
-        this.speciesRepository = speciesRepository;
+    public SpeciesService(SpeciesRepository repo) {
+
+        this.repo = repo;
     }
 
-    public Species addSpecies(Species species) {
+    public Species addSpecies(Species sp) {
 
-        return speciesRepository.save(species);
+        return repo.save(sp);
     }
 
     public List<Species> getAllSpecies() {
 
-        return speciesRepository.findAll();
+        return repo.findAll();
     }
 
     public Species getSpeciesById(int id) {
 
-        return speciesRepository.findById(id).orElse(null);
+        return repo.findById(id).orElse(null);
     }
 
-    public Species updateSpecies(Species species) {
+    public Species updateSpecies(Species sp) {
 
-        return speciesRepository.save(species);
+        return repo.save(sp);
     }
 
     public void deleteSpecies(int id) {
 
-        speciesRepository.deleteById(id);
+        repo.deleteById(id);
     }
 }

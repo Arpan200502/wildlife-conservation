@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WildlifeApplication {
+    // this is the app entry point
+    // main entry point
+    // TODO: startup stays here
+    // System.out.println("starting");
 
-    // quick note
-    // TODO: tidy this later
-    // System.out.println("debug");
+
 
     public static void main(String[] args) {
 

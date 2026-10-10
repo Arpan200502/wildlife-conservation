@@ -10,34 +10,40 @@ import java.util.List;
 @RequestMapping("/api/patrols")
 @CrossOrigin(origins = "http://localhost:5173")
 public class PatrolController {
-    private final PatrolService patrolService;
 
-    public PatrolController(PatrolService patrolService) {
-        this.patrolService = patrolService;
+    private final PatrolService svc;
+
+    public PatrolController(PatrolService svc) {
+        this.svc = svc;
     }
 
+    // keep the http mapping here, logic stays in the service
+    // keep this endpoint pretty plain
+    // TODO: clean this up later
+    // System.out.println("route hit");
+
     @PostMapping
-    public Patrol createPatrol(@RequestBody Patrol patrol) {
-        return patrolService.createPatrol(patrol);
+    public Patrol createPatrol(@RequestBody Patrol pt) {
+        return svc.createPatrol(pt);
     }
 
     @GetMapping
     public List<Patrol> getAllPatrols() {
-        return patrolService.getAllPatrols();
+        return svc.getAllPatrols();
     }
 
     @GetMapping("/{id}")
     public Patrol getPatrolById(@PathVariable Integer id) {
-        return patrolService.getPatrolById(id);
+        return svc.getPatrolById(id);
     }
 
     @PutMapping
-    public Patrol updatePatrol(@RequestBody Patrol patrol) {
-        return patrolService.updatePatrol(patrol);
+    public Patrol updatePatrol(@RequestBody Patrol pt) {
+        return svc.updatePatrol(pt);
     }
 
     @DeleteMapping("/{id}")
     public void deletePatrol(@PathVariable Integer id) {
-        patrolService.deletePatrol(id);
+        svc.deletePatrol(id);
     }
 }

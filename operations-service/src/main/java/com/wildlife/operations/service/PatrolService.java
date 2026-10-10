@@ -9,40 +9,45 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Service
+// keep the crud calls together here
+    // keep the service methods small
+    // TODO: maybe split this later
+    // System.out.println("service hit");
 public class PatrolService {
-    private final PatrolRepository patrolRepository;
 
-    public PatrolService(PatrolRepository patrolRepository) {
-        this.patrolRepository = patrolRepository;
+    private final PatrolRepository repo;
+
+    public PatrolService(PatrolRepository repo) {
+        this.repo = repo;
     }
 
-    public Patrol createPatrol(Patrol patrol) {
-        return patrolRepository.save(patrol);
+    public Patrol createPatrol(Patrol pt) {
+        return repo.save(pt);
     }
 
     public List<Patrol> getAllPatrols() {
-        return patrolRepository.findAll();
+        return repo.findAll();
     }
 
     public Patrol getPatrolById(Integer id) {
-        return patrolRepository.findById(id)
+        return repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Patrol not found with id: " + id));
     }
 
-    public Patrol updatePatrol(Patrol patrol) {
-        if (patrol.getId() == null || !patrolRepository.existsById(patrol.getId())) {
+    public Patrol updatePatrol(Patrol pt) {
+        if (pt.getId() == null || !repo.existsById(pt.getId())) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    "Patrol not found with id: " + patrol.getId());
+                    "Patrol not found with id: " + pt.getId());
         }
-        return patrolRepository.save(patrol);
+        return repo.save(pt);
     }
 
     public void deletePatrol(Integer id) {
-        if (!patrolRepository.existsById(id)) {
+        if (!repo.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "Patrol not found with id: " + id);
         }
-        patrolRepository.deleteById(id);
+        repo.deleteById(id);
     }
 }
