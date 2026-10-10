@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rescues")
-@CrossOrigin(origins = "http://localhost:5173")
 public class RescueController {
 
     private final RescueService svc;

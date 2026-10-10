@@ -29,9 +29,12 @@ public class OperationsClientService {
                     .body(OperationsIncident[].class);
 
             if (incidents == null) {
-                throw new IllegalStateException("Operations Service returned an empty response body");
+                throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,
+                        "Operations Service returned an empty response body for incidents");
             }
             return Arrays.asList(incidents);
+        } catch (ResponseStatusException ex) {
+            throw ex;
         } catch (RestClientException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,
                     "Unable to retrieve incidents from Operations Service", ex);
@@ -46,9 +49,12 @@ public class OperationsClientService {
                     .body(OperationsPatrol[].class);
 
             if (patrols == null) {
-                throw new IllegalStateException("Operations Service returned an empty response body");
+                throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,
+                        "Operations Service returned an empty response body for patrols");
             }
             return Arrays.asList(patrols);
+        } catch (ResponseStatusException ex) {
+            throw ex;
         } catch (RestClientException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,
                     "Unable to retrieve patrols from Operations Service", ex);

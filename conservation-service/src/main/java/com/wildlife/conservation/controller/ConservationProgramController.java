@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/conservation-programs")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ConservationProgramController {
 
 

@@ -29,4 +29,3 @@ Each service has its own PostgreSQL database, and the frontend communicates dire
 
 
 
-from irine

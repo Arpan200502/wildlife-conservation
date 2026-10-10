@@ -10,7 +10,6 @@ import com.wildlife.operations.service.IncidentService;
 
 @RestController
 @RequestMapping("/api/incidents")
-@CrossOrigin(origins = "http://localhost:5173")
 public class IncidentController {
 
 

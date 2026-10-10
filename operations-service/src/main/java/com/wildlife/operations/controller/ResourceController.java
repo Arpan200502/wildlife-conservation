@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/resources")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ResourceController {
 
     // resource endpoints stay thin and delegate to the service
