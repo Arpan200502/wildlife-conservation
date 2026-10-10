@@ -1,3 +1,63 @@
+
 package com.wildlife.service;
 
-// TODO: Add business logic in AnimalService.
+import com.wildlife.model.Animal;
+import com.wildlife.model.Species;
+import com.wildlife.repository.AnimalRepository;
+import com.wildlife.repository.SpeciesRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class AnimalService {
+
+    private final AnimalRepository animalRepository;
+    private final SpeciesRepository speciesRepository;
+
+    public AnimalService(
+            AnimalRepository animalRepository,
+            SpeciesRepository speciesRepository) {
+
+        this.animalRepository = animalRepository;
+        this.speciesRepository = speciesRepository;
+    }
+
+    public Animal addAnimal(Animal animal) {
+
+        int speciesId = animal.getSpecies().getId();
+
+        Species species = speciesRepository.findById(speciesId)
+                .orElseThrow(() -> new RuntimeException("Species not found: " + speciesId));
+
+        animal.setSpecies(species);
+
+        return animalRepository.save(animal);
+    }
+
+    public List<Animal> getAllAnimals() {
+        return animalRepository.findAll();
+    }
+
+    public Optional<Animal> getAnimalById(int id) {
+        return animalRepository.findById(id);
+    }
+
+    public Animal updateAnimal(Animal animal) {
+
+        int speciesId = animal.getSpecies().getId();
+
+        Species species = speciesRepository.findById(speciesId)
+                .orElseThrow(() -> new RuntimeException("Species not found: " + speciesId));
+
+        animal.setSpecies(species);
+
+        return animalRepository.save(animal);
+    }
+
+    public void deleteAnimal(int id) {
+        animalRepository.deleteById(id);
+    }
+}

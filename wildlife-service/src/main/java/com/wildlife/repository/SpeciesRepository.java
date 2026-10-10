@@ -1,3 +1,9 @@
+
 package com.wildlife.repository;
 
-// TODO: Extend JpaRepository in SpeciesRepository.
+import com.wildlife.model.Species;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SpeciesRepository extends JpaRepository<Species, Integer> {
+
+}
