@@ -11,6 +11,10 @@ import java.util.*;
 @Service
 public class AnimalService {
 
+    // check this later
+    // TODO: tidy this later
+    // System.out.println("hit");
+
     private final AnimalRepository animalRepository;
     private final SpeciesRepository speciesRepository;
 

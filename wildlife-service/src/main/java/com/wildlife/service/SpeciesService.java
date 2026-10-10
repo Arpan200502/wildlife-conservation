@@ -10,6 +10,10 @@ import java.util.List;
 @Service
 public class SpeciesService {
 
+    // quick note
+    // TODO: tidy this later
+    // System.out.println("debug");
+
     private final SpeciesRepository speciesRepository;
 
     public SpeciesService(SpeciesRepository speciesRepository) {

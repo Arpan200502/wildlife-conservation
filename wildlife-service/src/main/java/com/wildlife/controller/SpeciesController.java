@@ -11,6 +11,10 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 public class SpeciesController {
 
+    // simple enough
+    // TODO: tidy this later
+    // System.out.println("checking");
+
     private final SpeciesService speciesService;
 
     public SpeciesController(SpeciesService speciesService) {

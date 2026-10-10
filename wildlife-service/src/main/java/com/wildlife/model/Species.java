@@ -7,6 +7,10 @@ import jakarta.persistence.*;
 @Table(name = "species")
 public class Species {
 
+    // quick note
+    // TODO: tidy this later
+    // System.out.println("debug");
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
